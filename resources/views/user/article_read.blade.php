@@ -6,14 +6,14 @@
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url('/') }}">
         <meta property="og:title" content="{{ $article->title }}">
-        <meta property="og:description" content="{!! Str::words($article->content,50,'...') !!}">
+        <meta property="og:description" content="OPTIMALISASI MEDIA DIGITAL DALAM PENCEGAHAN COVID-19 DI KELURAHAN MERI KOTA MOJOKERTO">
         <meta property="og:image" content="{{ $article->image }}">
     
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="{{ url('/') }}">
         <meta property="twitter:title" content="{{ $article->title }}">
-        <meta property="twitter:description" content="{!! Str::words($article->content,50,'...') !!}">
+        <meta property="twitter:description" content="OPTIMALISASI MEDIA DIGITAL DALAM PENCEGAHAN COVID-19 DI KELURAHAN MERI KOTA MOJOKERTO">
         <meta property="twitter:image" content="{{ $article->image }}">
 
 @endsection
