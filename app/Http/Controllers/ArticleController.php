@@ -34,7 +34,7 @@ class ArticleController extends Controller
         $category = Category::all();
         $label = Label::all();
         $video = Video::all();
-        return view('admin.article.create',compact('category','label','video'));
+        return view('admin.article.newcreate',compact('category','label','video'));
     }
 
     /**
@@ -45,6 +45,8 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
+        dd($request->all());
         $request->validate([
             'category_id' => 'required',
             'title' => 'required',
