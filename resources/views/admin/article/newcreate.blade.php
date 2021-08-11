@@ -37,7 +37,7 @@
 </head>
 
 <body>
-    
+
     <form action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="content" id="article_content">
@@ -56,7 +56,7 @@
                     <input id="import-file" type="file" accept=".md,.html">
                 </div>
             </div>
-    
+
             <div class="toolbar">
                 <div class="popup">
                     <button type="button" class="popup-button toolbar-button"><i class="fas fa-heading"></i></button>
@@ -98,31 +98,31 @@
                         <button class="popup-button" onclick='downloadContent("txt")'><i class="fas fa-file-alt"></i>&nbsp; Download TXT</button>
                         <button class="popup-button" onclick='downloadContent("md")'><i class="fas fa-file"></i>&nbsp; Download MD</button>
                     </div>
-    
+
                 </div>
                 <span id="counter">0</span>
             </div>
-    
+
             <div id="editor" class="editor" data-simplebar data-simplebar-auto-hide="false">
                 <div id="content" class="content" contenteditable="true">
                     <p>Start writing...✏️</p>
                 </div>
             </div>
-            
+
             <!-- Modal -->
             <div id="animatedModal">
                 <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID -->
-                <div  id="btn-close-modal" class="close-animatedModal"> 
+                <div  id="btn-close-modal" class="close-animatedModal">
                     <i class="fas fa-times-circle"></i>
                 </div>
-                    
+
                 <div class="modal-content">
                     <div class="input-group">
                         <label class="label">Title</label>
                         <input type="text" class="input" name="title" value="{{ old('title') }}">
                     </div>
                     <div class="input-group">
-                        <label>Category</label>
+                        <label class="label">Category</label>
                         <select name="category_id" class="input">
                             <option></option>
                             @foreach ($category as $item)
@@ -131,11 +131,18 @@
                         </select>
                     </div>
                     <div class="input-group">
-                        <label class="label">Category</label>
-                        <select name="" class="input">
-                            <option value="">Kesehatan</option>
-                            <option value="">Kecantikan</option>
-                        </select>
+                        <label class="label">Label</label><span class="text-danger">*</span>
+                            <div class="input-group">
+                                @foreach ($label as $item)
+                                <label class="mr-5">
+                                    <input type="checkbox" name="label[]" value="{{ $item->id }}" class="form-check-inline"> <span>{{ $item->name }}</span>
+                                </label>
+                                @endforeach
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label class="label" for="image">Image</label>
+                        <input type="file" name="image" id="image">
                     </div>
                     <div class="input-group">
                         <button type="submit" class="btn-save"><i class="fas fa-save"></i> Save</button>
@@ -159,7 +166,7 @@
     <script src="{{ asset('assets/js/writtyautosave.js') }}"></script>
     <script>
         $("#demo01").animatedModal();
-        $('#content').keydown(function (e) { 
+        $('#content').keydown(function (e) {
             var val = $(this).html();
             $('#article_content').val(val);
         });

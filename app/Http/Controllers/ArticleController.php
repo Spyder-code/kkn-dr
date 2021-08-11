@@ -45,8 +45,6 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-
-        dd($request->all());
         $request->validate([
             'category_id' => 'required',
             'title' => 'required',
@@ -111,7 +109,6 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-
         $request->validate([
             'category_id' => 'required',
             'title' => 'required',

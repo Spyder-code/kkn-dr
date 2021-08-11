@@ -83,6 +83,10 @@ body.dark-theme{
         --scroll-thumb-color:hsl(var(--hue-color),12%,36%) ;
 }
 
+p{
+    color: var(--text-color);
+}
+
 /*========== Button Dark/Light ==========*/
 
 .banner{
