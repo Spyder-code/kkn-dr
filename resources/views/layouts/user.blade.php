@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css">
-    <link rel="stylesheet" href="{{ asset('assets') }}/css/home.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/home1.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <link rel="icon" href="{{asset('images/logo-icon.png')}}" type="image/png" />
