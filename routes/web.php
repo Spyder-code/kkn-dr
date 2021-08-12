@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LabelController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,7 @@ Auth::routes();
 
 Route::prefix('admin')->group(function () {
     Route::get('/main', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/event', [EventController::class, 'index'])->name('event');
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('profile.update');
     Route::put('/profile/password/{id}', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('profile.update.password');
@@ -43,6 +45,9 @@ Route::get('/label/{name}', [App\Http\Controllers\PageController::class, 'search
 Route::get('/category/{name}', [App\Http\Controllers\PageController::class, 'search_category'])->name('user.search.category');
 Route::get('/article', [App\Http\Controllers\PageController::class, 'article'])->name('user.article');
 Route::get('/videos', [App\Http\Controllers\PageController::class, 'video'])->name('user.video');
+Route::get('/event', [App\Http\Controllers\PageController::class, 'event'])->name('user.event');
+Route::get('/instagram', [App\Http\Controllers\PageController::class, 'instagram'])->name('user.instagram');
 Route::get('/{article}', [App\Http\Controllers\PageController::class, 'article_read'])->name('article.read');
+Route::resource('event-c', EventController::class);
 
 

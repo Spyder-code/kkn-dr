@@ -7,10 +7,10 @@
             <div class="text-center">
                 <div class="grid grid-cols-1 md:grid-cols-2 text-center">
                     <img src="{{ $main_article->image }}" class="w-full h-48 mt-10 md:h-64">
-                    <div class="md:mt-20">
-                        <a href="" class="text-xl md:text-3xl text-primary">{{ $main_article->title }}</a>
+                    <div class="md:mt-20 text-white">
+                        <a href="" class="text-xl md:text-3xl">{{ $main_article->title }}</a>
                         <div class="text-left mt-2 mb-3">{!! Str::words($main_article->content,50,'...') !!}</div>
-                        <a href="{{ route('article.read',['article'=>$main_article->id]) }}" class="py-2 px-10 bg-blue-800 rounded-full mt-10 text-white"><i class="uil uil-eye"></i> Read</a>
+                        <a href="{{ route('article.read',['article'=>$main_article->id]) }}" class="py-2 px-10 bg-yellow-500 rounded-full mt-10 text-white"><i class="uil uil-eye"></i> Read</a>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                     @endforeach
                 </div>
                 <!-- End Article -->
-                
+
             </div>
             <!-- Right Content -->
             <div class="w-full md:w-1/4">

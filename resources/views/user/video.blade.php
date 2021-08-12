@@ -7,10 +7,11 @@
             <div class="text-center">
                 <div class="grid grid-cols-1 md:grid-cols-2 text-center">
                     <iframe class="h-48 mr-20 mt-10 md:h-64 video-main" src="{{ $main_video->embed }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="md:mt-20">
-                        <a href="" class="text-xl md:text-3xl text-primary">{{ $main_video->title }}</a>
-                        <p class="text-left mt-2 mb-3">{{ Str::words($main_video->description,50,'...') }}</p>
-                        <a href="{{ $main_video->link }}" class="py-2 px-10 bg-red-800 rounded-full mt-5 text-white"><i class="uil uil-youtube"></i> View on Youtube</a>
+                    <div class="md:mt-20 text-white">
+                        <a href="" class="text-xl md:text-3xl">{{ $main_video->title }}</a>
+                        <div class="mt-5">
+                            <a href="{{ $main_video->link }}" class="py-2 px-10 bg-red-800 rounded-full mt-5 text-white"><i class="uil uil-youtube"></i> View on Youtube</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -33,7 +34,7 @@
                     @endforeach
                 </div>
                 <!-- End Videos -->
-                
+
             </div>
             <!-- Right Content -->
             <div class="w-full md:w-1/4">

@@ -20,14 +20,14 @@ class PageController extends Controller
         $this->label = Label::all();
 
     }
-    
+
     public function index()
     {
         Meta::setTitle('Kader kesehatan kelurahan meri')
             ->prependTitle('Home')
             ->setDescription('OPTIMALISASI MEDIA DIGITAL DALAM PENCEGAHAN COVID-19 DI KELURAHAN MERI KOTA MOJOKERTO')
             ->setKeywords('OPTIMALISASI, MEDIA DIGITAL, DALAM PENCEGAHAN COVID-19, DI KELURAHAN MERI, KOTA MOJOKERTO');
-        
+
         $popular_post = $this->popular_post;
         $category = $this->category;
         $label = $this->label;
@@ -76,7 +76,7 @@ class PageController extends Controller
         $main_video =  Video::latest('created_at')->first();
         return view('user.video',compact('video','main_video','label','category','popular_post'));
     }
-    
+
     public function search_label($name)
     {
         Meta::setTitle('Kader kesehatan kelurahan meri')
@@ -115,5 +115,29 @@ class PageController extends Controller
         $article =  Article::all()->where('category_id',$category_data->id);
         $video =  Video::all()->where('category_id',$category_data->id);
         return view('user.search',compact('article','video','label','category','popular_post'));
+    }
+
+    public function event()
+    {
+        Meta::setTitle('Kader kesehatan kelurahan meri')
+            ->prependTitle('Event')
+            ->setDescription('OPTIMALISASI MEDIA DIGITAL DALAM PENCEGAHAN COVID-19 DI KELURAHAN MERI KOTA MOJOKERTO')
+            ->setKeywords('OPTIMALISASI, MEDIA DIGITAL, DALAM PENCEGAHAN COVID-19, DI KELURAHAN MERI, KOTA MOJOKERTO');
+        $popular_post = $this->popular_post;
+        $category = $this->category;
+        $label = $this->label;
+        return view('user.event', compact('popular_post','category','label'));
+    }
+
+    public function instagram()
+    {
+        Meta::setTitle('Kader kesehatan kelurahan meri')
+            ->prependTitle('Instagram')
+            ->setDescription('OPTIMALISASI MEDIA DIGITAL DALAM PENCEGAHAN COVID-19 DI KELURAHAN MERI KOTA MOJOKERTO')
+            ->setKeywords('OPTIMALISASI, MEDIA DIGITAL, DALAM PENCEGAHAN COVID-19, DI KELURAHAN MERI, KOTA MOJOKERTO');
+        $popular_post = $this->popular_post;
+        $category = $this->category;
+        $label = $this->label;
+        return view('user.instagram', compact('popular_post','category','label'));
     }
 }

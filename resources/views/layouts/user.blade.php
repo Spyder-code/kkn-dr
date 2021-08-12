@@ -35,13 +35,13 @@
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="instagram.html" class="nav__link">
+                        <a href="{{ route('user.instagram') }}" class="nav__link @yield('nav-instagram')">
                             <i class="uil uil-instagram nav__icon"></i> Instagram
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#contact" class="nav__link">
-                            <i class="uil uil-user nav__icon"></i> About Me
+                        <a href="{{ route('user.event') }}" class="nav__link @yield('nav-event')"><sup class="text-red-600 ml-10">Hot</sup>
+                            <i class="uil uil-user nav__icon"></i> Event
                         </a>
                     </li>
                 </ul>

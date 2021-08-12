@@ -84,6 +84,13 @@
 					</a>
 				</li>
 				<li>
+					<a href="{{ route('event') }}">
+						<div class="parent-icon"><i class='bx bx-trophy'></i>
+						</div>
+						<div class="menu-title">Event</div>
+					</a>
+				</li>
+				<li>
 					<a href="{{ route('profile') }}">
 						<div class="parent-icon"><i class='bx bx-user-pin'></i>
 						</div>

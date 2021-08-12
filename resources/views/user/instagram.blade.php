@@ -1,12 +1,15 @@
 @extends('layouts.user')
-@section('nav-home','active-link')
+@section('nav-instagram','active-link')
+@section('style')
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+@endsection
 @section('content')
     <!-- Banner -->
-    <section class="py-5 px-20 banner">
-        <div class="flex justify-center mt-28 md:mt-20">
+    <section class="py-5 px-5 lg:px-20 banner">
+        <div class="flex justify-center md:mt-20">
             <div class="text-center">
                 <div class="md:mt-40">
-                    <p class="title-banner"><b>OPTIMALISASI MEDIA DIGITAL DALAM PENCEGAHAN COVID-19 DI KELURAHAN MERI KOTA MOJOKERTO</b></p>
+                    <p class="title-banner"><b>Follow Us On Instagram</b></p>
                 </div>
             </div>
         </div>
@@ -16,51 +19,7 @@
     <section class="mt-10 px-4 md:px-24 py-10 content">
         <div class="flex flex-col md:flex-row">
             <div class="w-full md:w-3/4 md:mr-10">
-                <!-- Web App -->
-                <p class="text-3xl my-4">Videos</p>
-                <hr>
-                <br>
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    @foreach ($video as $item)
-                    <div class="item-app p-5 rounded-xl">
-                        <iframe class=" w-full h-48" src="{{ $item->embed }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <div class="text-center mt-3">
-                            <h2 class="text-l"><a href="{{ $item->link }}">{{ $item->title }}</a></h2>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <!-- End Web App -->
-
-                <!-- Mobile App -->
-                <p class="text-3xl my-4">Article</p>
-                <hr>
-                <br>
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    @foreach ($article as $item)
-                    <div class="item-app p-5 rounded-xl">
-                        <img src="{{ $item->image }}" class="h-48 w-full" alt="{{ $item->title }}">
-                        <div class="text-center mt-3">
-                            <h2 class="text-l mt-5"><a href="{{ route('article.read',['article'=>$item->id]) }}">{{ $item->title }}</a></h2>
-                            <div class="flex flex-wrap justify-center my-2">
-                                @foreach ($item->label as $label_item)
-                                    <a href="{{ route('user.search.label',['name'=>$label_item->label->name]) }}" class="mr-3 text-xs text-blue-400">#{{ $label_item->label->name}}</a>
-                                @endforeach
-                            </div>
-                            <hr>
-                            <div class="flex mt-4 justify-center text-primary">
-                                <div class="mr-5">
-                                    <span><i class="uil uil-eye"></i> {{ $item->viewer }} Views</span>
-                                </div>
-                                <div class="mr-5">
-                                    <span><i class="uil uil-share"></i> 200 Share</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <!-- End Mobile App -->
+                <div class="elfsight-app-d84966d1-c33c-412c-b864-b005655920aa"></div>
             </div>
             <!-- Right Content -->
             <div class="w-full md:w-1/4">
