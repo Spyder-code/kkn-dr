@@ -43,7 +43,7 @@ class EventController extends Controller
             'phone' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'file' => 'required|mimes:mp4,mov,mkv,qt,3gp,avi,wmv|max:20000',
+            'file' => 'required|mimes:mp4,mov,mkv,qt,3gp,avi,wmv|max:10240',
         ]);
 
         if ($files = $request->file('file')) {
