@@ -86,7 +86,7 @@
                             <textarea name="description" class="mt-2 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border border-blue gray-300 outline-none focus:outline-none focus:ring w-full" cols="30" rows="10">{{  old('description')  }}</textarea>
                         </div>
                         <div class="mb-3 pt-0">
-                            <label>File Video</label><sup class="text-red-500">*</sup><br>
+                            <label>File Video (Max: 10MB)</label><sup class="text-red-500">*</sup><br>
                             <input type="file" name="file" id="file1" onchange="uploadFile()"><br>
                             <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
                             <h3 id="status"></h3>
