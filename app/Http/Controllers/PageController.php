@@ -10,6 +10,7 @@ use App\Models\Video;
 use App\Models\VideoLabel;
 use Illuminate\Http\Request;
 use Butschster\Head\Facades\Meta;
+use Illuminate\Support\Facades\Http;
 
 class PageController extends Controller
 {
@@ -31,8 +32,12 @@ class PageController extends Controller
         $popular_post = $this->popular_post;
         $category = $this->category;
         $label = $this->label;
-        $article =  Article::all()->sortByDesc('created_at')->take(2);
-        $video =  Video::all()->sortByDesc('created_at')->take(2);
+        $cat = ['title','id','category_id','created_at','content'];
+        $article =  Article::inRandomOrder($cat[rand(0,4)])->paginate(4);
+        // $article =  Article::all()->sortByDesc('created_at')->take(4);
+        // $video =  Video::all()->sortByDesc('created_at')->take(4);
+        $catt = ['title','id','description','created_at'];
+        $video =  Video::inRandomOrder($catt[rand(0,3)])->paginate(4);
         return view('user.home',compact('article','video','label','category','popular_post'));
     }
 
@@ -41,12 +46,18 @@ class PageController extends Controller
         Meta::setTitle('Kader kesehatan kelurahan meri')
                 ->prependTitle('Article')
                 ->setDescription('OPTIMALISASI MEDIA DIGITAL DALAM PENCEGAHAN COVID-19 DI KELURAHAN MERI KOTA MOJOKERTO')
-                ->setKeywords('OPTIMALISASI, MEDIA DIGITAL, DALAM PENCEGAHAN COVID-19, DI KELURAHAN MERI, KOTA MOJOKERTO')
-;
+                ->setKeywords('OPTIMALISASI, MEDIA DIGITAL, DALAM PENCEGAHAN COVID-19, DI KELURAHAN MERI, KOTA MOJOKERTO');
+        // $link = ['berita','masyarakat-umum','panduan','melakukan-perjalanan','tenaga-kesehatan','pengusaha-dan-bisnis','hoax-buster','protokol','regulasi','tanya-jawab','artikel-kipi','kipi'];
+        // $i = 2;
+        // foreach ($link as $item ) {
+        //     $this->getDataArticle('https://covid19.go.id/feed/'.$item,$i);
+        //     $i++;
+        // };
         $popular_post = $this->popular_post;
         $category = $this->category;
         $label = $this->label;
-        $article =  Article::all();
+        $cat = ['title','id','category_id','created_at','content'];
+        $article =  Article::inRandomOrder($cat[rand(0,4)])->paginate(6);
         $main_article =  Article::latest('created_at')->first();
         return view('user.article',compact('article','main_article','label','category','popular_post'));
     }
@@ -65,6 +76,7 @@ class PageController extends Controller
 
     public function video()
     {
+        // $this->getDataVideo();
         Meta::setTitle('Kader kesehatan kelurahan meri')
             ->prependTitle('Video')
             ->setDescription('OPTIMALISASI MEDIA DIGITAL DALAM PENCEGAHAN COVID-19 DI KELURAHAN MERI KOTA MOJOKERTO')
@@ -72,7 +84,8 @@ class PageController extends Controller
         $popular_post = $this->popular_post;
         $category = $this->category;
         $label = $this->label;
-        $video =  Video::all();
+        $cat = ['title','id','description','created_at'];
+        $video =  Video::inRandomOrder($cat[rand(0,3)])->paginate(6);
         $main_video =  Video::latest('created_at')->first();
         return view('user.video',compact('video','main_video','label','category','popular_post'));
     }
@@ -139,5 +152,51 @@ class PageController extends Controller
         $category = $this->category;
         $label = $this->label;
         return view('user.instagram', compact('popular_post','category','label'));
+    }
+
+    public function getDataArticle($urlGet,$type)
+    {
+        $parseFile = simplexml_load_file($urlGet,'SimpleXMLElement', LIBXML_NOCDATA);
+        $json = json_encode($parseFile);
+        $array = json_decode($json);
+        $berita_terkini = $array->channel->item;
+        foreach ($berita_terkini as $item ) {
+            $article = Article::all()->where('title',$item->title);
+            if($article->count()==0){
+                if ($type!=11) {
+                    foreach ($item->enclosure as $en ) {
+                        $url = $en->url;
+                    }
+                }else{
+                    $url = 'https://miro.medium.com/max/2000/1*U6D-LTFsKb6_RMIoYZLSZQ.png';
+                }
+                Article::create([
+                    'user_id' => 1,
+                    'category_id' => $type,
+                    'title' => $item->title,
+                    'content' => $item->description,
+                    'image' => $url,
+                    'viewer' => rand(20,200),
+                ]);
+            };
+        };
+    }
+
+    public function getDataVideo()
+    {
+        $response = Http::get('https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCWBnPaPlVx2_h7Kdva52AYg&maxResults=100&order=date&key=AIzaSyAFwF_EuWdc7G_wz1oOF2aiMaHKPzHGz14');
+        $array = json_decode($response->collect());
+        $data = $array->items;
+        foreach ($data as $item ) {
+            $video = Video::all()->where('title',$item->snippet->title);
+            if ($video->count()==0) {
+                Video::create([
+                    'title' => $item->snippet->title,
+                    'description' => $item->snippet->description,
+                    'embed' => 'https://www.youtube.com/embed/'.$item->id->videoId,
+                    'link' => 'https://youtu.be/'.$item->id->videoId,
+                ]);
+            }
+        }
     }
 }

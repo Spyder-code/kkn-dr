@@ -34,7 +34,9 @@
                     @endforeach
                 </div>
                 <!-- End Videos -->
-
+                <div class="m-10">
+                    {{ $video->links() }}
+                </div>
             </div>
             <!-- Right Content -->
             <div class="w-full md:w-1/4">

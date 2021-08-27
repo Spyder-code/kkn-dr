@@ -63,8 +63,8 @@
     <footer class=" px-2 md:px-32 py-6 flex justify-between">
         <a href="#">Created By Spydercode</a>
         <ul class="flex justify-center">
-            <li class="mr-4"><a href="">Instagram</a></li>
-            <li class="mr-4"><a href="">Youtube</a></li>
+            <li class="mr-4"><a href="https://www.instagram.com/kader.kesehatan_meri/">Instagram</a></li>
+            <li class="mr-4"><a href="https://www.youtube.com/channel/UC20uqMBck0IEu0FfgUBxnWA">Youtube</a></li>
         </ul>
     </footer>
 

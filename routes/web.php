@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LabelController;
 use App\Http\Controllers\VideoController;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // })->middleware('visitor');
 Route::get('/blank', function () {
-    return view('admin.blank');
+    // for ($i=4; $i < 14; $i++) {
+    //     Article::find($i)->update(['category_id'=>2]);
+    // }
 })->name('blank');
 
 Auth::routes();

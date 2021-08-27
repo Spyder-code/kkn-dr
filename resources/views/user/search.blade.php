@@ -2,13 +2,10 @@
 @section('content')
     <!-- Banner -->
     <section class="py-5 px-20 banner">
-        <div class="flex justify-center mt-10 md:mt-14">
+        <div class="flex justify-center mt-28 md:mt-20">
             <div class="text-center">
-                <div class="grid grid-cols-1 md:grid-cols-2 text-center">
-                    <img src="assets/images/gebrak.jpeg" alt="Spyder-code" class="md:h-80 md:mt-10 w-full">
-                    <div class="md:mt-40">
-                        <p class="text-xl md:text-3xl text-primary">OPTIMALISASI MEDIA DIGITAL DALAM PENCEGAHAN COVID-19 DI KELURAHAN MERI KOTA MOJOKERTO</p>
-                    </div>
+                <div class="md:mt-40">
+                    <p class="title-banner"><b>OPTIMALISASI MEDIA DIGITAL DALAM PENCEGAHAN COVID-19 DI KELURAHAN MERI KOTA MOJOKERTO</b></p>
                 </div>
             </div>
         </div>
@@ -38,7 +35,7 @@
                 </div>
                 @endif
                 <!-- End Web App -->
-                
+
                 <!-- Mobile App -->
                 @if ($article->count()>0)
                 <p class="text-3xl my-4">Article</p>
