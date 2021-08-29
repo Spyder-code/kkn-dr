@@ -43,7 +43,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('video', VideoController::class);
 });
 
-Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('user.home')->middleware('visitor');;
+Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('user.home')->middleware('visitor');
+Route::get('/review', [App\Http\Controllers\ReviewController::class, 'index'])->name('user.review');
 Route::get('/label/{name}', [App\Http\Controllers\PageController::class, 'search_label'])->name('user.search.label');
 Route::get('/category/{name}', [App\Http\Controllers\PageController::class, 'search_category'])->name('user.search.category');
 Route::get('/article', [App\Http\Controllers\PageController::class, 'article'])->name('user.article');
@@ -51,6 +52,7 @@ Route::get('/videos', [App\Http\Controllers\PageController::class, 'video'])->na
 Route::get('/event', [App\Http\Controllers\PageController::class, 'event'])->name('user.event');
 Route::get('/instagram', [App\Http\Controllers\PageController::class, 'instagram'])->name('user.instagram');
 Route::get('/{article}', [App\Http\Controllers\PageController::class, 'article_read'])->name('article.read');
+Route::post('/review', [App\Http\Controllers\ReviewController::class, 'store'])->name('review.store');
 Route::resource('event-c', EventController::class);
 
 

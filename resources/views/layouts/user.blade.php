@@ -40,8 +40,8 @@
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="{{ route('user.event') }}" class="nav__link @yield('nav-event')"><sup class="text-red-600 ml-10">Hot</sup>
-                            <i class="uil uil-user nav__icon"></i> Event
+                        <a href="{{ route('user.review') }}" class="nav__link @yield('nav-event')"><sup class="text-red-600 ml-10">Hot</sup>
+                            <i class="uil uil-user nav__icon"></i> Review
                         </a>
                     </li>
                 </ul>
